@@ -1,0 +1,40 @@
+---
+title: "Classifying Brain Waves: Seizure Prediction and the Ethical Challenges Ahead"
+author: "Lynn Check"
+date: "October 25, 2024"
+output: pdf_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+
+The human brain is capable of many wonders, yet it can also be one’s greatest challenge. Our brain, the central hub of the entire body’s functionality, thoughts, and emotions can be taken away by just one abnormal electrical signal. Epilepsy is the second most common brain disorder after stroke (Galanopoulou et al., 2012). Epilepsy is a chronic neurological disorder characterized by sudden bursts of electrical activity in the brain known as seizures. These seizures cause individuals to temporarily lose control of their body, potentially causing physical injuries during an episode. Around 50% of the epileptic cases are idiopathic (Chaovalitwongse et al., 2007) and around 20% to 30% of the cases had their root cause misdiagnosed (McWilliam, 2024). With the medical and technological industry expanding and improving, the challenge of researching methods to detect early warning signs of seizures has become attainable. This paper aims to examine the methodologies, results, and ethical concerns of Dr.Chaovalitwongse, Ph.D student Ya-Ju Fan and Dr.Sachdeo’s research: “On the Time Series K-Nearest Neighbor Classification of Abnormal Brain Activity.”
+
+The study on epilepsy classification, currently published as a peer-reviewed paper, progresses through a multitude of phases. It begins with detailed definitions of the classification methodologies, goals, and categorization predictor variables used to facilitate the modeling and labeling of data. The foundation of this study aims to understand abnormal brain activity through electroencephalogram (EEG) recordings from ten epileptic patients. It focuses on distinguishing the normal from the pre-seizure states. The researchers employed the K-Nearest Neighbor (KNN) classification technique to analyze the EEG signals and classify them to be normal or abnormal. Each of the ten patients conducted continuous long-term (3-13 days) EEG recordings. It was a multichannel intracranial recording where macroelectrodes were surgically implanted bilaterally in the hippocampus, temporal, and frontal lobe cortex of the patients. To enhance the accuracy of the study, EEG data from multiple channels was included and divided in several epochs. Specifically, from the continuous recordings, five EEG epochs from the normal and abnormal states were randomly sampled per recording. EEG epochs refers to the time segments of when the brain waves are recorded. The sample time segments will be used as the times in the model. Then, for every single patient, the research extrapolated every normal EEG recording that was 8 hours apart from a seizure and every EEG recording that existed 30 minutes before the seizures. These EEG recordings are samples that will serve as the data for the training and testing sets. 
+
+The study utilized the T-statistical, Euclidean, and Dynamic Time Warping (DTW) distances as measures of similarities. The KNN classifier was trained and tested, resulting in discovering the T-statistical distance performing the best out of the three. By employing a cross-validation technique with threefolds and fivefolds tests, it reinforces the reliability of the discoveries by ensuring consistency across the training and testing data. Including the cross-validation step is crucial for EEG data due to the variability of electrical brain activity and non-stationary signals which can make classification challenging. 
+
+Proceeding to the analysis phase, the researchers evaluated the performance using metrics like sensitivity and specificity. The preliminary tests presented the T-statistical distance to yield a higher sensitivity (81%) and specificity (73%), indicating the presence of effective differentiation between the normal and abnormal pre-seizure brain activities. The other two methods showed 10% less sensitivity and specificity compared to the results using T-statistical distance. To determine the optimal setting for accurate predictions, the classifiers were trained on numerous k-values. Then, to further validate the classifier, the research used a receiver operating characteristic (ROC) analysis to help quantify the trade-offs between sensitivity and false positives, generating the optimal parameter selection for reliable classifications. 
+
+The authors of the study emphasized on the use of Chaos Theory to quantify the brain’s dynamics. They used the Short-term Maximum Lyapunov Exponent to measure the level of chaos in the system. Their discoveries suggested that the pre-seizure state exhibited measurable chaotic changes that can be quantified and effectively classified. Furthermore, the researchers were able to present how the classification framework could be introduced and utilized in real-time monitoring applications. Introducing the possibility to predict seizures, curate proactive interventions, and develop prevention plans can potentially improve patient outcomes. The method proposed in the study intializes a foundation towards developing automated systems that can monitor and track various brainwave activities, issue alerts, and offer substantial information to aid in the treatment and management plans for epilepsy. 
+
+While there are a plethora of benefits that come from this research, it does come with some ethical concerns. The research incorporates an invasive surgical procedure, where elctrodes are implanted into the patient’s brain to collect relevent data. Due to this, there are questions about whether the benefits of this research outweigh the ethical and moral concerns in regards to the data collection and experiment itself. This aligns with Immanuel Kant’s deontologic view, stating that it is important to respect an individual’s autonomy and not instrumentalize them as solely a means to an end. Furthermore, the concern of generalizability is prevalent. The sample size of the study was only 10 patients from which they used to gather the data. This poses the question of whether this is representative of the larger population, especially those with different types of epilepsy triggers, which can give rise to overall algorithmic bias.
+
+The study holds a lot of promise to advancing medicine and finding a solution to epilepsy. However, it is imperative to understand the ethical challenges that this study poses, especially in regards to the field of medicine.
+
+\newpage 
+
+\begin{center}
+{\Large References}
+\end{center}
+
+
+Chaovalitwongse, W. A., Fan, Y.-J., & Sachdeo, R. C. (2007). On the Time Series K-Nearest Neighbor Classification of Abnormal Brain Activity. IEEE Transactions on Systems, Man, and Cybernetics - Part A: Systems and Humans, 37(6), 1005–1016. https://doi.org/10.1109/tsmca.2007.897589 
+
+Galanopoulou, A. S., Buckmaster, P. S., Staley, K. J., Moshé, S. L., Perucca, E., Engel, J., Löscher, W., Noebels, J. L., Pitkänen, A., Stables, J., White, H. S., O’Brien, T. J., & Simonato for the American Epilepsy Society Basic Science Com, M. (2012). Identification of new epilepsy treatments: Issues in preclinical methodology. Epilepsia, 53(3), 571–582. https://doi.org/10.1111/j.1528-1167.2011.03391.x 
+
+McWilliam, M. (2024, February 12). Idiopathic (Genetic) Generalized Epilepsy. StatPearls [Internet]. https://www.ncbi.nlm.nih.gov/books/NBK546611/ 
+
+Wang, W. K., Chen, I., Hershkovich, L., Yang, J., Shetty, A., Singh, G., Jiang, Y., Kotla, A., Shang, J. Z., Yerrabelli, R., Roghanizad, A. R., Shandhi, M. M. H., & Dunn, J. (2022, October 20). A Systematic Review of Time Series Classification Techniques Used in Biomedical Applications. Sensors (Basel, Switzerland). https://pmc.ncbi.nlm.nih.gov/articles/PMC9611376/ 
